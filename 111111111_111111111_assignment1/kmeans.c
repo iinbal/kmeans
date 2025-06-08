@@ -16,6 +16,12 @@ void kmeans(double **vectors, int num_vectors, int dimension, int k, int iterati
 void free_vectors_array(double **vectors, int num_vectors);
 void print_result(double **centroids, int k, int dimension);
 
+/* 
+ * Main function: entry point of the program
+ * Parses command line arguments, loads input data, 
+ * runs k-means clustering, and cleans up resources
+ * Returns 0 on success, 1 on failure
+ */
 int main(int argc, char **argv) {
       int k, iterations;
     int num_vectors = 0;
@@ -42,6 +48,14 @@ int main(int argc, char **argv) {
     return 0;
 }
 
+/* 
+ * Validates command line arguments
+ * argc: argument count
+ * argv: argument vector
+ * k: output for number of clusters
+ * iterations: output for maximum iterations
+ * Returns 1 if valid, 0 otherwise
+ */
 int validate_input(int argc, char *argv[], int *k, int *iterations) {
   char *endptr;
     long k_long;
@@ -82,6 +96,11 @@ int validate_input(int argc, char *argv[], int *k, int *iterations) {
     return 1;
 }
 
+/* 
+ * Counts commas in a string to determine vector dimensions
+ * s: input string
+ * Returns number of commas found
+ */
 int count_commas(const char *s) {
     int count = 0;
     int i = 0;
@@ -92,6 +111,12 @@ int count_commas(const char *s) {
     return count;
 }
 
+/* 
+ * Loads input vectors from stdin
+ * num_vectors_ptr: output for number of vectors loaded
+ * dimension_ptr: output for vector dimension
+ * Returns 2D array of vectors or NULL on failure
+ */
 double **load_input(int *num_vectors_ptr, int *dimension_ptr) {
     char line[MAX_LINE_LENGTH];
     double **vectors = NULL;
@@ -198,6 +223,14 @@ double **load_input(int *num_vectors_ptr, int *dimension_ptr) {
     return vectors;
 }
 
+/* 
+ * Performs k-means clustering algorithm
+ * vectors: input data vectors
+ * num_vectors: number of vectors
+ * dimension: vector dimension
+ * k: number of clusters
+ * iterations: maximum iterations
+ */
 void kmeans(double **vectors, int num_vectors, int dimension, int k, int iterations) {
     double **centroids;
     double **new_centroids_sum;
@@ -334,6 +367,11 @@ void kmeans(double **vectors, int num_vectors, int dimension, int k, int iterati
     free(prev_assignments);
 }
 
+/* 
+ * Frees memory allocated for vectors
+ * vectors: array of vectors to free
+ * num_vectors: number of vectors in array
+ */
 void free_vectors_array(double **vectors, int num_vectors) {
     int i = 0;
     if (vectors) {
@@ -344,6 +382,12 @@ void free_vectors_array(double **vectors, int num_vectors) {
     }
 }
 
+/* 
+ * Prints clustering results
+ * centroids: final cluster centroids
+ * k: number of clusters
+ * dimension: vector dimension
+ */
 void print_result(double **centroids, int k, int dimension) {
     int i = 0;
     int j = 0;
