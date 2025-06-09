@@ -38,7 +38,7 @@ int main(int argc, char **argv) {
     }
 
     if (k >= num_vectors) {
-        printf("Invalid number of clusters!\n");
+        printf("Incorrect number of clusters!\n");
         free_vectors_array(vectors, num_vectors);
         return 1;
     }
@@ -73,7 +73,7 @@ int validate_input(int argc, char *argv[], int *k, int *iterations) {
     }
 
     if (k_long <= MIN_K) {
-        printf("Invalid number of clusters!\n");
+        printf("Incorrect number of clusters!\n");
         return 0;
     }
     *k = (int)k_long;
@@ -85,7 +85,7 @@ int validate_input(int argc, char *argv[], int *k, int *iterations) {
             return 0;
         }
         if (iter_long <= MIN_ITER || iter_long >= MAX_ITER) {
-            printf("Invalid maximum iteration!\n");
+            printf("Incorrect maximum iteration!\n");
             return 0;
         }
         *iterations = (int)iter_long;

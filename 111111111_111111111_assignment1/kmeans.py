@@ -22,7 +22,7 @@ def parse_command_line_args():
         # Parse k (number of clusters)
         k = int(args[0])
         if k <= MIN_K:  # Validate k
-            print("Invalid number of clusters!")
+            print("Incorrect number of clusters!")
             return None, None, None
     except ValueError:  # Handle non-integer k
         print("An Error Has Occurred")
@@ -40,7 +40,7 @@ def parse_command_line_args():
             max_iter = int(args[1])
             # Validate iteration count
             if max_iter <= MIN_ITER or max_iter >= MAX_ITER:
-                print("Invalid maximum iteration!")
+                print("Incorrect maximum iteration!")
                 return None, None, None
         except ValueError:    # Handle non-integer max_iter
             print("An Error Has Occurred")
@@ -124,7 +124,7 @@ def initialize_centroids(vectors, k):
     """
     # Validate k doesn't exceed number of vectors
     if k >= len(vectors):
-        print("Invalid number of clusters!")
+        print("Incorrect number of clusters!")
         return None, None
 
     # Select first k vectors as initial centroids

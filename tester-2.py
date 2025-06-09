@@ -168,9 +168,9 @@ def run_negative_test(
 def execute(config, test_type, input_file=None) -> subprocess.CompletedProcess[str]:
     match test_type:
         case TestType.PYTHON:
-            args = ["python3", "kmeans.py", config["k"]]
+            args = ["python3", "/home/developer/kmeans/111111111_111111111_assignment1/kmeans.py", config["k"]]
         case TestType.C:
-            args = ["./kmeans", config["k"]]
+            args = ["/home/developer/kmeans/111111111_111111111_assignment1/kmeans", config["k"]]
 
     if config.get("max_iter"):
         args.append(config["max_iter"])
